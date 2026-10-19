@@ -3,49 +3,258 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EntropyPixel — EntropyPixel</title>
+<title>EntropyPixel: Science Museum for Android</title>
+<meta name="description" content="A museum of counterintuitive science for Android. Ten exhibits where your intuition is wrong, and the pixels prove it. Free, no ads, no account.">
+<link rel="canonical" href="https://entr0py-0xre.github.io/entropypixel/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="EntropyPixel: Science Museum">
+<meta property="og:description" content="Ten exhibits where your intuition is wrong, and the pixels prove it.">
+<meta property="og:url" content="https://entr0py-0xre.github.io/entropypixel/">
+<meta property="og:image" content="https://entr0py-0xre.github.io/entropypixel/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#08090B">
+<link rel="icon" type="image/png" href="img/icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "EntropyPixel: Science Museum",
+  "operatingSystem": "Android 7.0 or later",
+  "applicationCategory": "EducationalApplication",
+  "description": "A museum of counterintuitive science. Ten exhibits where your intuition is wrong, and the pixels prove it.",
+  "url": "https://entr0py-0xre.github.io/entropypixel/",
+  "installUrl": "https://play.google.com/store/apps/details?id=io.entropydev.entropypixel",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "EntropyDev" }
+}
+</script>
 <style>
-  :root { color-scheme: dark; }
+  @font-face {
+    font-family: "Departure Mono";
+    src: url("fonts/DepartureMono-Regular.otf") format("opentype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Playfair Display";
+    src: url("fonts/PlayfairDisplay-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  :root {
+    color-scheme: dark;
+    --bg: #08090B;
+    --panel: #111317;
+    --line: rgba(255, 255, 255, .09);
+    --ink: #ECEDEF;
+    --muted: #A7ABB5;
+    --emergence: #5BE39B;
+    --paradoxes: #F0A81E;
+    --mono: "Departure Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
   * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
-    margin: 0; padding: 2.5rem 1.25rem 4rem;
-    background: #10131B; color: #E0E2ED;
-    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.6 var(--sans);
   }
-  main { max-width: 44rem; margin: 0 auto; }
-  h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 .35rem; letter-spacing: -.01em; }
-  h2 { font-size: 1.12rem; margin: 2.1rem 0 .6rem; color: #ADC6FF; }
-  p, li { color: #C1C6D7; }
-  a { color: #ADC6FF; }
-  ul { padding-left: 1.15rem; }
-  li { margin: .35rem 0; }
-  code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: .92em; background: rgba(255,255,255,.07); padding: .1em .35em; border-radius: 3px;
-  }
-  strong { color: #E0E2ED; }
+  a { color: inherit; }
+  .wrap { max-width: 60rem; margin: 0 auto; padding: 0 1.25rem; }
+
   .eyebrow {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: #ADC6FF;
-    margin: 0 0 1.4rem;
+    font-family: var(--mono);
+    font-size: .8rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
   }
+
+  /* Opening */
+  header.wrap { padding-top: 3.5rem; padding-bottom: 2.5rem; }
+  .wordmark {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin: .3rem 0 2.2rem;
+    background: linear-gradient(90deg, var(--emergence), var(--paradoxes));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    width: fit-content;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2.1rem, 6vw, 3.4rem);
+    line-height: 1.12;
+    margin: 0 0 1.1rem;
+    max-width: 15em;
+  }
+  .lede { color: var(--muted); max-width: 34rem; margin: 0 0 2rem; font-size: 1.08rem; }
+  .play {
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .85rem 1.4rem;
+    border-radius: 999px;
+    background: var(--ink); color: var(--bg);
+    font-weight: 600; text-decoration: none;
+  }
+  .play:hover { background: #fff; }
+  .play svg { width: 1.1rem; height: 1.1rem; }
+  .fine { color: var(--muted); font-size: .9rem; margin: .9rem 0 0; }
+
+  /* Screens */
+  .screens {
+    display: flex; gap: 1rem;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: .5rem 1.25rem 1.5rem;
+    margin: 0 auto; max-width: 75rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, .18) transparent;
+  }
+  .screens img {
+    flex: 0 0 auto;
+    width: min(62vw, 15rem); height: auto;
+    border-radius: 1rem;
+    border: 1px solid var(--line);
+    scroll-snap-align: center;
+  }
+
+  /* Wings */
+  section.wrap { padding-top: 2.75rem; padding-bottom: 2.75rem; border-top: 1px solid var(--line); }
+  .wing-head { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+  .wing-head h2 {
+    font-family: var(--mono); font-weight: 400;
+    font-size: 1rem; letter-spacing: .22em; text-transform: uppercase;
+    margin: 0;
+  }
+  .wing-head p { margin: 0; color: var(--muted); font-family: var(--serif); font-style: italic; }
+  .emergence h2 { color: var(--emergence); }
+  .paradoxes h2 { color: var(--paradoxes); }
+
+  .exhibits { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: .9rem; overflow: hidden; }
+  .exhibits li { background: var(--panel); padding: 1.1rem 1.2rem; display: grid; grid-template-columns: 2.4rem 1fr; gap: .2rem 1rem; align-content: start; }
+  .exhibits .no { font-family: var(--mono); color: var(--muted); font-size: .85rem; padding-top: .3rem; grid-row: span 2; }
+  .exhibits h3 { font-family: var(--serif); font-weight: 600; font-size: 1.2rem; margin: 0; }
+  .exhibits p { margin: 0; color: var(--muted); }
+  @media (min-width: 46rem) {
+    .exhibits { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* House rules */
+  .rules { display: grid; gap: 1.6rem; }
+  @media (min-width: 46rem) { .rules { grid-template-columns: 1fr 1fr; } }
+  .rules h3 { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; margin: 0 0 .3rem; }
+  .rules p { margin: 0; color: var(--muted); }
+  section > h2 { font-family: var(--serif); font-weight: 600; font-size: 1.7rem; margin: 0 0 1.4rem; }
+
+  section.closing { text-align: center; padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .closing h2 { margin-bottom: 1.4rem; }
+
   footer {
-    margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,.1);
-    font-size: .87rem; color: #C1C6D7;
+    border-top: 1px solid var(--line);
+    padding: 1.6rem 0 2.4rem;
+    color: var(--muted); font-size: .9rem;
   }
-  footer a { margin-right: 1rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; }
+  footer a { color: var(--muted); }
+  footer .who { margin-left: auto; }
+  @media (max-width: 30rem) { footer .who { margin-left: 0; width: 100%; } }
 </style>
 </head>
 <body>
-<main>
-<p class="eyebrow">EntropyPixel</p>
-<h1>EntropyPixel</h1>
-<p>Legal documents for the <strong>EntropyPixel</strong> Android app — a museum of counterintuitive science, in pixels.</p><ul><li><a href="privacy/">Privacy Policy</a></li>
-<li><a href="terms/">Terms of Use</a></li></ul>
+
+<header class="wrap">
+  <p class="eyebrow">The museum</p>
+  <p class="wordmark">EntropyPixel</p>
+  <h1>Your intuition lies. Here's the pixel proof.</h1>
+  <p class="lede">A museum of counterintuitive science for Android. Ten exhibits, each built around one
+    result that sounds wrong until you run it yourself and watch it happen.</p>
+  <a class="play" href="https://play.google.com/store/apps/details?id=io.entropydev.entropypixel">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 2.6v18.8c0 .5.5.8.9.6l16.3-9.4c.4-.2.4-.9 0-1.1L4.9 2c-.4-.2-.9.1-.9.6z"/></svg>
+    Get it on Google Play
+  </a>
+  <p class="fine">Free. No ads, no account. Android 7.0 or later.</p>
+</header>
+
+<div class="screens" aria-label="Screenshots">
+  <img src="img/museum.jpg" alt="The museum lobby: today's exhibit and the list of the Emergence wing" width="540" height="960">
+  <img src="img/life.jpg" alt="The Life exhibit" width="540" height="960">
+  <img src="img/monty.jpg" alt="The Monty Hall exhibit" width="540" height="960">
+  <img src="img/chaos.jpg" alt="The Chaos and Evolution exhibit" width="540" height="960">
+  <img src="img/birthday.jpg" alt="The Birthday exhibit" width="540" height="960">
+</div>
+
+<section class="wrap emergence">
+  <div class="wing-head">
+    <h2>Emergence</h2>
+    <p>Order nobody designed</p>
+  </div>
+  <ul class="exhibits">
+    <li><span class="no">01</span><h3>Chaos &amp; Evolution</h3><p>Pure chance won't draw your picture before the heat death of the universe. Let the matching pixels stay, and the same picture shows up in seconds.</p></li>
+    <li><span class="no">02</span><h3>Life</h3><p>One rule, no goal, no target, and order anyway, on an endless plane. Zoom far enough into one board and you find Life running inside it.</p></li>
+    <li><span class="no">03</span><h3>Diffusion</h3><p>A gas spreads out with nothing pushing it. Add a force and the box un-mixes itself by weight.</p></li>
+    <li><span class="no">04</span><h3>Chaos Game</h3><p>Jump at random toward random corners, and the same fractal appears every time. The dice never mattered.</p></li>
+    <li><span class="no">05</span><h3>Galton Board</h3><p>Every ball falls at random. Together they draw the same curve, every time, and you can predict it exactly.</p></li>
+    <li><span class="no">06</span><h3>Langton's Ant</h3><p>Two trivial rules, ten thousand steps of mess, then a straight highway that never ends.</p></li>
+  </ul>
+</section>
+
+<section class="wrap paradoxes">
+  <div class="wing-head">
+    <h2>Paradoxes</h2>
+    <p>Arguments you can settle</p>
+  </div>
+  <ul class="exhibits">
+    <li><span class="no">07</span><h3>Monty Hall</h3><p>Switch doors and you win two times in three. Change how the host behaves, and the famous answer moves while the board looks exactly the same.</p></li>
+    <li><span class="no">08</span><h3>Birthday</h3><p>23 people make 253 pairs, which is why a shared birthday is likely. It still takes 253 people to have even odds that someone shares yours.</p></li>
+    <li><span class="no">09</span><h3>Simpson's Paradox</h3><p>Better in every department, worse overall. Drag one wall and watch it flip.</p></li>
+    <li><span class="no">10</span><h3>Boy or Girl</h3><p>Same family, different odds, depending on how you found out about the boy.</p></li>
+  </ul>
+</section>
+
+<section class="wrap">
+  <h2>House rules</h2>
+  <div class="rules">
+    <div>
+      <h3>Every claim has a source</h3>
+      <p>Each exhibit cites where its numbers come from. Where we simplify, the exhibit says so instead of hiding it.</p>
+    </div>
+    <div>
+      <h3>Found a mistake? Tell us</h3>
+      <p>Every exhibit has a "spotted an error?" link that writes straight to us.</p>
+    </div>
+    <div>
+      <h3>Nothing about you leaves the phone</h3>
+      <p>No ads, no account, no tracking. The app works offline. It only goes online to confirm a Pro purchase with Google Play.</p>
+    </div>
+    <div>
+      <h3>All ten exhibits are free</h3>
+      <p>Pro is a one-time $3.99. It adds more to explore inside six of the exhibits, and it never locks one.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap closing">
+  <h2>Come and test your intuition.</h2>
+  <a class="play" href="https://play.google.com/store/apps/details?id=io.entropydev.entropypixel">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 2.6v18.8c0 .5.5.8.9.6l16.3-9.4c.4-.2.4-.9 0-1.1L4.9 2c-.4-.2-.9.1-.9.6z"/></svg>
+    Get it on Google Play
+  </a>
+</section>
+
 <footer>
-<a href="privacy/">Privacy Policy</a><a href="terms/">Terms of Use</a>
-<a href="mailto:entropy.dev.office@gmail.com">Contact</a>
+  <div class="wrap">
+    <a href="privacy/">Privacy Policy</a>
+    <a href="terms/">Terms of Use</a>
+    <a href="mailto:entropy.dev.office@gmail.com">entropy.dev.office@gmail.com</a>
+    <span class="who">EntropyPixel is made by EntropyDev.</span>
+  </div>
 </footer>
-</main>
+
 </body>
 </html>
